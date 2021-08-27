@@ -1,0 +1,43 @@
+<% if user_signed_in? %>
+  <h1>Employees</h1>
+
+  <table class="table table-striped table-bodered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+        <th>User Id</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @employees.each do |employee| %>
+        <% if employee.user == current_user %>
+        <tr>
+          <td><%= link_to employee.first_name+''+employee.last_name , employee %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.phone %></td>
+          <td><%= employee.twitter %></td>
+          <td><%= employee.user_id %></td>
+          
+          <td><%= link_to 'Edit', edit_employee_path(employee), class: 'btn btn-outline-primary btn-sm'%></td>
+          <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } ,
+           class: 'btn btn-outline-danger btn-sm' %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Employee', new_employee_path , class: "btn btn-secondary" %>
+<% else %>
+
+  <h1> Hello World! </h1> <br><br>
+  This is my first rail page!
+
+<% end %>

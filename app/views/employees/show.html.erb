@@ -1,0 +1,20 @@
+
+
+<div class="jumbotron">
+  <h1 class="display-4"><%= @employee.first_name %><%= @employee.last_name %></h1> <br>
+  <p class="lead">
+    <%= @employee.email %>|
+    <%= @employee.phone %>|
+    <%= @employee.twitter %>
+  </p>
+  <hr class="my-4">
+  
+  <p class="lead">
+    <%= link_to 'Edit', edit_employee_path(@employee) , class: "btn btn-secondary"%> 
+    <%= link_to 'Delete', @employee, method: :delete, data: { confirm: 'Are you sure?' } ,
+           class: 'btn btn-danger' %>
+    <%= link_to 'Back', employees_path , class: "btn btn-dark" %>
+  </p>
+</div>
+
+
